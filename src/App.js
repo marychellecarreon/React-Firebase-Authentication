@@ -1,21 +1,53 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+import Navigation from './Components/Navigation';
+import LandingPage from './Components/Landing';
+import SignUpPage from './Components/SignUp';
+import SignInPage from './Components/SignIn';
+import PasswordForgetPage from './Components/PasswordForget';
+import HomePage from './Components/Home';
+import AccountPage from './Components/Account';
+
+import * as routes from './Constants/Routes';
+
+const App = () =>
+  <Router>
+    <div>
+      <Navigation />
+
+      <hr/>
+
+      <Route
+         exact path={routes.LANDING}
+         component={() => <LandingPage />}
+      />
+
+      <Route
+         exact path={routes.SIGN_UP}
+         component={() => <SignUpPage />}
+       />
+
+       <Route
+          exact path={routes.SIGN_IN}
+          component={() => <SignInPage />}
+        />
+
+        <Route
+          exact path={routes.PASSWORD_FORGET}
+          component={() => <PasswordForgetPage />}
+        />
+
+        <Route
+          exact path={routes.HOME}
+          component={() => <HomePage />}
+        />
+
+        <Route
+          exact path={routes.ACCOUNT}
+          component={() => <AccountPage />}
+        />
       </div>
-    );
-  }
-}
+    </Router>
 
 export default App;
